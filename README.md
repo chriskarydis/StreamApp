@@ -18,13 +18,13 @@
 
 ##  Microsoft Stream Video
 
-https://github.com/chriskarydis/StreamApp/ 
+  
 
 ---
 
 ##  GitHub Repository
 
- [Προσθέστε εδώ το link του private GitHub repository της ομάδας]
+ https://github.com/chriskarydis/StreamApp/
 
 ---
 
