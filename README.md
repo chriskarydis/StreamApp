@@ -18,7 +18,7 @@
 
 ##  Microsoft Stream Video
 
-🎬 [Προσθέστε εδώ το Stream link με πλήρη πρόσβαση για αξιολόγηση]  
+🎬 [https://github.com/chriskarydis/StreamApp/]  
 
 ---
 
