@@ -1,0 +1,549 @@
+/* === Body και Βασικό Layout === */
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* === Θέματα: Light / Dark === */
+html.light {
+  background: linear-gradient(135deg, #eedddd, #cf0505, #ac0505, #780404);
+  background-attachment: fixed;
+  color: #111;
+}
+
+html.dark {
+  background: linear-gradient(135deg, #000000, #3D0000, #3D0000, #af0202);
+  background-attachment: fixed;
+  color: #f9f9f9;
+}
+
+
+
+/* === Πλοήγηση === */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg, #e0e0e0);
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+html.dark nav {
+  background-color: #222;
+}
+
+.nav-links,
+.nav-user {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-links a,
+.nav-user a {
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+html.light .nav-links a,
+html.light .nav-user a {
+  color: #111;
+}
+
+html.dark .nav-links a,
+html.dark .nav-user a {
+  color: #eee;
+}
+
+.nav-links a:hover,
+.nav-user a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+html.dark .nav-links a:hover,
+html.dark .nav-user a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a.active {
+  background-color: #444;
+  color: white;
+}
+
+.nav-logo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  padding: 0.4rem 0.9rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo:hover {
+  text-decoration: none;
+  color: var(--accent-color, #009688);
+}
+
+/* === Κουμπί Εναλλαγής Θέματος === */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.4s ease, opacity 0.4s ease;
+  opacity: 1;
+}
+
+#theme-toggle.animating {
+  transform: rotate(180deg);
+  opacity: 0.3;
+}
+html.light #theme-toggle { color: #000; }
+html.dark #theme-toggle  { color: #fff; }
+
+/* === Buttons === */
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.page-btn:hover {
+  background-color: #666;
+}
+
+.page-btn.small {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.page-btn.small.danger {
+  background-color: #b71c1c;
+  color: #fff;
+}
+.page-btn.small.danger:hover {
+  background-color: #e53935;
+}
+
+.button-link {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: #eee;
+  color: #333;
+  transition: background 0.3s;
+}
+.button-link:hover {
+  background: #ccc;
+}
+
+.page-btn.active {
+  background: #333;
+  color: white;
+  pointer-events: none;
+}
+
+
+/* === Φόρμες === */
+form input,
+form select {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.4rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+form button {
+  display: inline-flex;
+  width: auto;
+}
+
+
+/* === Search (προηγμένες φόρμες) === */
+.search-form-wrapper {
+  position: sticky;
+  top: 0;
+  background: inherit;
+  padding: 1rem 0;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-form .search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.search-form .search-bar label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.search-form .search-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.search-form input,
+.search-form select {
+  padding: 0.4rem;
+  max-width: 180px;
+}
+
+.search-actions-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+/* === Form Fields === */
+form input[type="text"],
+form input[type="username"],
+form input[type="password"],
+form input[type="email"],
+form input[type="date"],
+form input[type="number"],
+form select,
+form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #888;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.2);
+}
+
+html.dark form input,
+html.dark form select,
+html.dark form textarea {
+  background-color: #222;
+  color: #f9f9f9;
+  border-color: #444;
+}
+
+select.per-page-select {
+  width: auto;
+  min-width: 60px;
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+/* === Tabs === */
+.tab-menu {
+  margin-bottom: 1rem;
+}
+
+.tab-menu button {
+  margin-right: 10px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.tab-menu button.active {
+  background: #333;
+  color: #fff;
+}
+
+.tab {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tab.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* === Flash Messages === */
+.flash-message {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: opacity 0.5s;
+}
+
+.flash-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* === Αριθμός λιστών === */
+.total-count {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* === Remember Me & Radio Visibility === */
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.visibility-options {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: bold;
+}
+
+.option-public  { color: #2e7d32; } /* πράσινο */
+.option-private { color: #b71c1c; } /* κόκκινο */
+
+.visibility-options input[type="radio"] {
+  margin-right: 0.4rem;
+  transform: scale(1.2);
+  accent-color: #555;
+}
+
+/* === Accordion === */
+.accordion-toggle {
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+}
+
+html.light .accordion-toggle {
+  background: #ddd;
+  color: #111;
+}
+
+html.dark .accordion-toggle {
+  background: #444;
+  color: #fff;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1rem; /* padding-left/right only (αρχικά) */
+  border: 1px solid #ccc;
+}
+
+.accordion-content.open {
+  padding: 1rem;
+  max-height: 500px; /* ή όσο χρειάζεσαι */
+}
+
+html.light .accordion-content {
+  background: #f1f1f1;
+  color: #000;
+}
+
+html.dark .accordion-content {
+  background: #222;
+  color: #eee;
+}
+
+
+/* === YouTube Results === */
+.youtube-result {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: background 0.3s;
+}
+
+html.dark .youtube-result {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.youtube-result iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 360px;
+  margin-top: 1rem;
+  border-radius: 6px;
+}
+
+.youtube-result form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.youtube-result select {
+  max-width: 280px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.youtube-result .page-btn.small {
+  width: auto;
+  padding: 0.4rem 1rem;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+  }
+  nav {
+    font-size: 0.9rem;
+  }
+}
+
+/* === YAML εμφάνιση σε dark mode === */
+html.dark pre {
+  background-color: #1e1e1e;
+  color: #0d0c0c;
+  font-family: monospace;
+  border: 1px solid #444;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+/* === Layout container === */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+main.container {
+  flex: 1;
+}
+
+/* === Footer === */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  font-size: 0.9rem;
+  background-color: #f1f1f1;
+  color: #333;
+  border-top: 1px solid #ccc;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+html.dark .site-footer {
+  background-color: #1e1e1e;
+  color: #bbb;
+  border-top: 1px solid #444;
+}
+
+/* === Card === */
+.card {
+  background-color: var(--card-bg, #fff);
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+html.dark .card {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.video-card {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--card-bg, #fff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: background 0.3s;
+}
+
+html.dark .video-card {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.video-card iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 360px;
+  margin-top: 1rem;
+  border-radius: 6px;
+}
+
+.video-card .page-btn {
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+/* === Password Strength Indicator === */
+.password-hint {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #999;
+}
+.password-hint.weak {
+  color: #b71c1c;
+}
+.password-hint.medium {
+  color: #f57c00;
+}
+.password-hint.strong {
+  color: #2e7d32;
+}
+
