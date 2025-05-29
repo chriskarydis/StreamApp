@@ -18,7 +18,7 @@
 
 ##  Microsoft Stream Video
 
-🎬 [https://github.com/chriskarydis/StreamApp/]  
+https://github.com/chriskarydis/StreamApp/ 
 
 ---
 
